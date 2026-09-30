@@ -1,483 +1,77 @@
-/* =========================
-   TYPING EFFECT
-========================= */
-
-const typingText =
-    document.getElementById("typing-text");
-
-const roles = [
-    "Artificial Intelligence",
-    "Machine Learning",
-    "Cybersecurity",
-    "Web Development"
-];
-
-let roleIndex = 0;
-let characterIndex = 0;
-let deleting = false;
-
-
-function typeEffect() {
-
-    const currentRole = roles[roleIndex];
-
-    if (!deleting) {
-
-        typingText.textContent =
-            currentRole.substring(
-                0,
-                characterIndex + 1
-            );
-
-        characterIndex++;
-
-        if (
-            characterIndex ===
-            currentRole.length
-        ) {
-
-            deleting = true;
-
-            setTimeout(typeEffect, 1300);
-
-            return;
-        }
-
-    } else {
-
-        typingText.textContent =
-            currentRole.substring(
-                0,
-                characterIndex - 1
-            );
-
-        characterIndex--;
-
-        if (characterIndex === 0) {
-
-            deleting = false;
-
-            roleIndex++;
-
-            if (roleIndex >= roles.length) {
-                roleIndex = 0;
-            }
-        }
-    }
-
-    setTimeout(
-        typeEffect,
-        deleting ? 45 : 90
-    );
-}
-
-
-typeEffect();
-
-
-/* =========================
-   ACTIVE NAVIGATION
-========================= */
-
-const sections =
-    document.querySelectorAll("section[id]");
-
-const navLinks =
-    document.querySelectorAll(".nav-link");
-
-
-function updateActiveNavigation() {
-
-    let currentSection = "";
-
-    sections.forEach(function (section) {
-
-        const sectionTop =
-            section.offsetTop - 180;
-
-        if (window.scrollY >= sectionTop) {
-
-            currentSection =
-                section.getAttribute("id");
-        }
-
-    });
-
-
-    navLinks.forEach(function (link) {
-
-        link.classList.remove("active");
-
-        if (
-            link.getAttribute("href") ===
-            "#" + currentSection
-        ) {
-
-            link.classList.add("active");
-        }
-
-    });
-}
-
-
-window.addEventListener(
-    "scroll",
-    updateActiveNavigation
-);
-
-
-/* =========================
-   SCROLL REVEAL
-========================= */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-
-const revealObserver =
-    new IntersectionObserver(
-
-        function (entries) {
-
-            entries.forEach(function (entry) {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-                    revealObserver.unobserve(
-                        entry.target
-                    );
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.15
-        }
-    );
-
-
-revealElements.forEach(function (element) {
-
-    revealObserver.observe(element);
-
-});
-
-
-/* =========================
-   SCROLL TO TOP
-========================= */
-
-const scrollTopButton =
-    document.getElementById("scrollTop");
-
-
-window.addEventListener(
-    "scroll",
-    function () {
-
-        if (window.scrollY > 500) {
-
-            scrollTopButton.classList.add(
-                "show"
-            );
-
-        } else {
-
-            scrollTopButton.classList.remove(
-                "show"
-            );
-        }
-
-    }
-);
-
-
-scrollTopButton.addEventListener(
-    "click",
-    function () {
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
-);
-
-
-/* =========================
-   CONTACT FORM
-========================= */
-
-const contactForm =
-    document.getElementById("contactForm");
-
-const formStatus =
-    document.getElementById("formStatus");
-
-const nameInput =
-    document.getElementById("name");
-
-const emailInput =
-    document.getElementById("email");
-
-const messageInput =
-    document.getElementById("message");
-
-
-contactForm.addEventListener(
-    "submit",
-    function (event) {
-
-        event.preventDefault();
-
-        const name =
-            nameInput.value.trim();
-
-        const email =
-            emailInput.value.trim();
-
-        const message =
-            messageInput.value.trim();
-
-
-        if (
-            name === "" ||
-            email === "" ||
-            message === ""
-        ) {
-
-            formStatus.textContent =
-                "Please complete all fields.";
-
-            formStatus.style.color =
-                "#dc2626";
-
-            return;
-        }
-
-
-        if (!email.includes("@")) {
-
-            formStatus.textContent =
-                "Please enter a valid email address.";
-
-            formStatus.style.color =
-                "#dc2626";
-
-            return;
-        }
-
-
-        formStatus.textContent =
-            "Thank you, " +
-            name +
-            ". Your message has been submitted successfully.";
-
-        formStatus.style.color =
-            "#16a34a";
-
-
-        contactForm.reset();
-
-    }
-);
-
-
-/* =========================
-   LIVE AI NETWORK BACKGROUND
-========================= */
+/* =====================================================
+   LIVE HERO NETWORK
+===================================================== */
 
 const canvas =
-    document.getElementById("ai-background");
+    document.getElementById("networkCanvas");
 
 const ctx =
     canvas.getContext("2d");
 
-let particles = [];
 
+let width = 0;
+let height = 0;
+
+
+/* =====================================================
+   MOUSE
+===================================================== */
+
+const mouse = {
+
+    x: 0,
+    y: 0,
+
+    active: false
+
+};
+
+
+window.addEventListener(
+    "mousemove",
+    function(event) {
+
+        mouse.x =
+            event.clientX;
+
+        mouse.y =
+            event.clientY;
+
+        mouse.active =
+            true;
+
+    }
+);
+
+
+window.addEventListener(
+    "mouseleave",
+    function() {
+
+        mouse.active =
+            false;
+
+    }
+);
+
+
+/* =====================================================
+   RESIZE
+===================================================== */
 
 function resizeCanvas() {
 
-    const hero =
-        document.querySelector(".hero");
-
-    canvas.width =
+    width =
+        canvas.width =
         window.innerWidth;
 
-    canvas.height =
-        hero.offsetHeight;
+    height =
+        canvas.height =
+        window.innerHeight;
 
-    createParticles();
 }
 
-
-function createParticles() {
-
-    particles = [];
-
-    const particleCount =
-        Math.min(
-            75,
-            Math.floor(window.innerWidth / 18)
-        );
-
-
-    for (
-        let i = 0;
-        i < particleCount;
-        i++
-    ) {
-
-        particles.push({
-
-            x:
-                Math.random() *
-                canvas.width,
-
-            y:
-                Math.random() *
-                canvas.height,
-
-            size:
-                Math.random() * 2 + 1,
-
-            speedX:
-                (Math.random() - 0.5) *
-                0.35,
-
-            speedY:
-                (Math.random() - 0.5) *
-                0.35
-
-        });
-
-    }
-}
-
-
-function drawParticles() {
-
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-
-    for (
-        let i = 0;
-        i < particles.length;
-        i++
-    ) {
-
-        for (
-            let j = i + 1;
-            j < particles.length;
-            j++
-        ) {
-
-            const dx =
-                particles[i].x -
-                particles[j].x;
-
-            const dy =
-                particles[i].y -
-                particles[j].y;
-
-            const distance =
-                Math.sqrt(
-                    dx * dx +
-                    dy * dy
-                );
-
-
-            if (distance < 130) {
-
-                const opacity =
-                    1 - distance / 130;
-
-                ctx.strokeStyle =
-                    `rgba(96, 165, 250, ${opacity * 0.22})`;
-
-                ctx.lineWidth = 1;
-
-                ctx.beginPath();
-
-                ctx.moveTo(
-                    particles[i].x,
-                    particles[i].y
-                );
-
-                ctx.lineTo(
-                    particles[j].x,
-                    particles[j].y
-                );
-
-                ctx.stroke();
-            }
-
-        }
-
-    }
-
-
-    particles.forEach(function (particle) {
-
-        ctx.beginPath();
-
-        ctx.arc(
-            particle.x,
-            particle.y,
-            particle.size,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.fillStyle =
-            "rgba(96, 165, 250, 0.75)";
-
-        ctx.fill();
-
-
-        particle.x +=
-            particle.speedX;
-
-        particle.y +=
-            particle.speedY;
-
-
-        if (
-            particle.x < 0 ||
-            particle.x > canvas.width
-        ) {
-
-            particle.speedX *= -1;
-        }
-
-
-        if (
-            particle.y < 0 ||
-            particle.y > canvas.height
-        ) {
-
-            particle.speedY *= -1;
-        }
-
-    });
-
-
-    requestAnimationFrame(
-        drawParticles
-    );
-}
+resizeCanvas();
 
 
 window.addEventListener(
@@ -486,6 +80,557 @@ window.addEventListener(
 );
 
 
-resizeCanvas();
+/* =====================================================
+   CREATE NETWORK NODES
+===================================================== */
 
-drawParticles();
+const nodes = [];
+
+
+function createNodes() {
+
+    nodes.length = 0;
+
+
+    const count =
+        Math.min(
+            100,
+            Math.floor(
+                width / 16
+            )
+        );
+
+
+    for (
+        let i = 0;
+        i < count;
+        i++
+    ) {
+
+        nodes.push({
+
+            x:
+                Math.random() *
+                width,
+
+            y:
+                Math.random() *
+                height,
+
+            vx:
+                (
+                    Math.random() -
+                    0.5
+                ) * 0.28,
+
+            vy:
+                (
+                    Math.random() -
+                    0.5
+                ) * 0.28,
+
+            radius:
+                1 +
+                Math.random() * 1.7,
+
+            phase:
+                Math.random() *
+                Math.PI * 2
+
+        });
+
+    }
+
+}
+
+
+createNodes();
+
+
+window.addEventListener(
+    "resize",
+    createNodes
+);
+
+
+/* =====================================================
+   CONNECTIONS
+===================================================== */
+
+function drawConnections() {
+
+    const maxDistance =
+        155;
+
+
+    for (
+        let i = 0;
+        i < nodes.length;
+        i++
+    ) {
+
+        for (
+            let j = i + 1;
+            j < nodes.length;
+            j++
+        ) {
+
+            const a =
+                nodes[i];
+
+            const b =
+                nodes[j];
+
+
+            const dx =
+                a.x - b.x;
+
+            const dy =
+                a.y - b.y;
+
+
+            const distance =
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
+
+
+            if (
+                distance <
+                maxDistance
+            ) {
+
+                const opacity =
+                    (
+                        1 -
+                        distance /
+                        maxDistance
+                    ) * 0.20;
+
+
+                ctx.beginPath();
+
+
+                ctx.moveTo(
+                    a.x,
+                    a.y
+                );
+
+
+                ctx.lineTo(
+                    b.x,
+                    b.y
+                );
+
+
+                ctx.strokeStyle =
+                    `rgba(
+                        60,
+                        135,
+                        240,
+                        ${opacity}
+                    )`;
+
+
+                ctx.lineWidth =
+                    0.65;
+
+
+                ctx.stroke();
+
+            }
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   NODES
+===================================================== */
+
+function drawNodes(time) {
+
+    nodes.forEach(
+        node => {
+
+
+            node.x +=
+                node.vx;
+
+            node.y +=
+                node.vy;
+
+
+            node.x +=
+                Math.sin(
+                    time * 0.0005 +
+                    node.phase
+                ) * 0.04;
+
+
+            node.y +=
+                Math.cos(
+                    time * 0.0004 +
+                    node.phase
+                ) * 0.04;
+
+
+            /* Mouse interaction */
+
+            if (
+                mouse.active
+            ) {
+
+                const dx =
+                    node.x -
+                    mouse.x;
+
+                const dy =
+                    node.y -
+                    mouse.y;
+
+                const distance =
+                    Math.sqrt(
+                        dx * dx +
+                        dy * dy
+                    );
+
+
+                if (
+                    distance < 150 &&
+                    distance > 0
+                ) {
+
+                    const force =
+                        (
+                            150 -
+                            distance
+                        ) / 150;
+
+
+                    node.x +=
+                        (
+                            dx /
+                            distance
+                        ) *
+                        force *
+                        0.8;
+
+
+                    node.y +=
+                        (
+                            dy /
+                            distance
+                        ) *
+                        force *
+                        0.8;
+
+                }
+
+            }
+
+
+            /* Wrap */
+
+            if (
+                node.x < -20
+            ) {
+                node.x =
+                    width + 20;
+            }
+
+            if (
+                node.x >
+                width + 20
+            ) {
+                node.x = -20;
+            }
+
+            if (
+                node.y < -20
+            ) {
+                node.y =
+                    height + 20;
+            }
+
+            if (
+                node.y >
+                height + 20
+            ) {
+                node.y = -20;
+            }
+
+
+            const pulse =
+                0.4 +
+                (
+                    Math.sin(
+                        time * 0.0015 +
+                        node.phase
+                    ) + 1
+                ) * 0.22;
+
+
+            /* Glow */
+
+            ctx.beginPath();
+
+            ctx.arc(
+                node.x,
+                node.y,
+                node.radius * 4,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fillStyle =
+                `rgba(
+                    50,
+                    135,
+                    255,
+                    ${pulse * 0.08}
+                )`;
+
+            ctx.fill();
+
+
+            /* Node */
+
+            ctx.beginPath();
+
+            ctx.arc(
+                node.x,
+                node.y,
+                node.radius,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fillStyle =
+                `rgba(
+                    95,
+                    170,
+                    255,
+                    ${pulse}
+                )`;
+
+            ctx.fill();
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CENTRAL GLOW
+===================================================== */
+
+function drawCentralGlow(time) {
+
+    const centerX =
+        width / 2;
+
+    const centerY =
+        height * 0.46;
+
+
+    const pulse =
+        1 +
+        Math.sin(
+            time * 0.0008
+        ) * 0.08;
+
+
+    const radius =
+        340 * pulse;
+
+
+    const gradient =
+        ctx.createRadialGradient(
+
+            centerX,
+            centerY,
+            0,
+
+            centerX,
+            centerY,
+            radius
+
+        );
+
+
+    gradient.addColorStop(
+        0,
+        "rgba(40,110,235,0.08)"
+    );
+
+    gradient.addColorStop(
+        0.5,
+        "rgba(25,80,180,0.035)"
+    );
+
+    gradient.addColorStop(
+        1,
+        "rgba(10,30,80,0)"
+    );
+
+
+    ctx.fillStyle =
+        gradient;
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        centerX,
+        centerY,
+        radius,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+}
+
+
+/* =====================================================
+   MOUSE LIGHT
+===================================================== */
+
+function drawMouseLight() {
+
+    if (
+        !mouse.active
+    ) {
+
+        return;
+
+    }
+
+
+    const radius =
+        210;
+
+
+    const gradient =
+        ctx.createRadialGradient(
+
+            mouse.x,
+            mouse.y,
+            0,
+
+            mouse.x,
+            mouse.y,
+            radius
+
+        );
+
+
+    gradient.addColorStop(
+        0,
+        "rgba(60,145,255,0.13)"
+    );
+
+    gradient.addColorStop(
+        0.35,
+        "rgba(50,120,255,0.05)"
+    );
+
+    gradient.addColorStop(
+        1,
+        "rgba(30,80,200,0)"
+    );
+
+
+    ctx.fillStyle =
+        gradient;
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        mouse.x,
+        mouse.y,
+        radius,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+function animate(time) {
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    drawCentralGlow(time);
+
+    drawConnections();
+
+    drawNodes(time);
+
+    drawMouseLight();
+
+
+    requestAnimationFrame(
+        animate
+    );
+
+}
+
+
+requestAnimationFrame(
+    animate
+);
+
+
+/* =====================================================
+   CONTACT FORM
+===================================================== */
+
+const contactForm =
+    document.getElementById(
+        "contactForm"
+    );
+
+
+if (
+    contactForm
+) {
+
+    contactForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            alert(
+                "Thank you for your message!"
+            );
+
+
+            contactForm.reset();
+
+        }
+    );
+
+}
