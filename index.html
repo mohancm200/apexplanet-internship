@@ -14,31 +14,38 @@
 
     <!-- ================= NAVIGATION ================= -->
 
-    <nav>
+    <nav id="navbar">
+
         <div class="nav-container">
 
-            <a href="#home" class="logo">CM.</a>
+            <a href="#home" class="logo">
+                C M Mohan
+            </a>
 
             <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
+
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+
             </div>
 
         </div>
+
     </nav>
 
 
-    <!-- ================= HERO SECTION ================= -->
+    <!-- ================= HERO ================= -->
 
     <section id="home" class="hero">
 
         <div class="hero-content">
 
-            <div class="hero-badge">
-                B.TECH STUDENT • AI & ML ENTHUSIAST
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                B.Tech Student • AI & ML Enthusiast
             </div>
 
             <p class="hero-intro">
@@ -50,21 +57,16 @@
             </h1>
 
             <h2>
-                Exploring the world of
-                <strong>Artificial Intelligence</strong>
-                and
-                <strong>Machine Learning</strong>
+                I am interested in
+                <span id="typing-text"></span><span class="cursor">|</span>
             </h2>
 
             <p class="hero-description">
                 I am a B.Tech student passionate about Artificial Intelligence,
-                Machine Learning, cybersecurity and web development. I enjoy
-                learning new technologies and turning ideas into practical
-                projects.
+                Machine Learning, cybersecurity and web development.
+                I enjoy learning new technologies and building practical projects.
             </p>
 
-
-            <!-- Interest Tags -->
 
             <div class="hero-tags">
 
@@ -76,16 +78,14 @@
             </div>
 
 
-            <!-- Buttons -->
-
             <div class="hero-buttons">
 
                 <a href="#projects" class="primary-btn">
-                    Explore My Projects
+                    View Projects →
                 </a>
 
                 <a href="#contact" class="secondary-btn">
-                    Let's Connect
+                    Contact Me
                 </a>
 
             </div>
@@ -95,23 +95,31 @@
     </section>
 
 
-    <!-- ================= QUICK HIGHLIGHTS ================= -->
+    <!-- ================= HIGHLIGHTS ================= -->
 
     <section class="highlights">
 
-        <div class="highlight-box">
+        <div class="highlight-card reveal">
+
+            <div class="highlight-number">
+                01
+            </div>
 
             <h3>AI & ML</h3>
 
             <p>
                 Exploring intelligent systems and machine learning
-                technologies.
+                applications.
             </p>
 
         </div>
 
 
-        <div class="highlight-box">
+        <div class="highlight-card reveal">
+
+            <div class="highlight-number">
+                02
+            </div>
 
             <h3>Web Development</h3>
 
@@ -122,25 +130,31 @@
         </div>
 
 
-        <div class="highlight-box">
+        <div class="highlight-card reveal">
+
+            <div class="highlight-number">
+                03
+            </div>
 
             <h3>Cybersecurity</h3>
 
             <p>
-                Interested in AI-driven security monitoring and threat
-                detection.
+                Interested in AI-driven security monitoring and detection.
             </p>
 
         </div>
 
 
-        <div class="highlight-box">
+        <div class="highlight-card reveal">
+
+            <div class="highlight-number">
+                04
+            </div>
 
             <h3>Problem Solving</h3>
 
             <p>
-                Improving programming and problem-solving skills through
-                practical projects.
+                Improving programming and logical thinking through projects.
             </p>
 
         </div>
@@ -148,11 +162,11 @@
     </section>
 
 
-    <!-- ================= ABOUT SECTION ================= -->
+    <!-- ================= ABOUT ================= -->
 
     <section id="about" class="section">
 
-        <div class="section-heading">
+        <div class="section-heading reveal">
 
             <p>GET TO KNOW ME</p>
 
@@ -163,11 +177,11 @@
 
         <div class="about-container">
 
-            <div class="about-main">
+            <div class="about-main reveal">
 
-                <div class="about-number">
+                <span class="section-number">
                     01
-                </div>
+                </span>
 
                 <h3>
                     Learning. Building. Improving.
@@ -179,15 +193,14 @@
                 </p>
 
                 <p>
-                    My main areas of interest include Artificial Intelligence,
+                    My areas of interest include Artificial Intelligence,
                     Machine Learning, cybersecurity and full stack web
                     development.
                 </p>
 
                 <p>
-                    I believe in learning through practical implementation.
-                    Working on projects allows me to understand technologies
-                    better and improve my development skills.
+                    I enjoy learning new technologies and applying them
+                    through practical projects.
                 </p>
 
             </div>
@@ -195,41 +208,46 @@
 
             <div class="about-side">
 
-                <div class="about-card">
+                <div class="about-card reveal">
 
                     <span>01</span>
 
                     <div>
+
                         <h3>Artificial Intelligence</h3>
 
                         <p>
-                            Exploring AI concepts and intelligent systems.
+                            Exploring intelligent systems and AI applications.
                         </p>
+
                     </div>
 
                 </div>
 
 
-                <div class="about-card">
+                <div class="about-card reveal">
 
                     <span>02</span>
 
                     <div>
+
                         <h3>Machine Learning</h3>
 
                         <p>
                             Learning algorithms and practical ML applications.
                         </p>
+
                     </div>
 
                 </div>
 
 
-                <div class="about-card">
+                <div class="about-card reveal">
 
                     <span>03</span>
 
                     <div>
+
                         <h3>Web Development</h3>
 
                         <p>
@@ -247,11 +265,11 @@
     </section>
 
 
-    <!-- ================= SKILLS SECTION ================= -->
+    <!-- ================= SKILLS ================= -->
 
     <section id="skills" class="section skills-section">
 
-        <div class="section-heading">
+        <div class="section-heading reveal">
 
             <p>MY TOOLKIT</p>
 
@@ -263,67 +281,111 @@
         <div class="skills-container">
 
 
-            <!-- Programming -->
+            <div class="skill-category reveal">
 
-            <div class="skill-category">
-
-                <div class="category-number">
+                <span class="section-number">
                     01
-                </div>
+                </span>
 
                 <h3>Programming</h3>
 
                 <p>
-                    Languages and programming fundamentals.
+                    Programming languages and fundamentals.
                 </p>
 
-                <div class="skill-list">
 
-                    <span>Python</span>
+                <div class="skill">
 
-                    <span>C</span>
+                    <div class="skill-header">
+                        <span>Python</span>
+                        <span>85%</span>
+                    </div>
 
-                    <span>C++</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="85%"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="skill">
+
+                    <div class="skill-header">
+                        <span>C / C++</span>
+                        <span>75%</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="75%"></div>
+                    </div>
 
                 </div>
 
             </div>
 
 
-            <!-- Web Development -->
+            <div class="skill-category reveal">
 
-            <div class="skill-category">
-
-                <div class="category-number">
+                <span class="section-number">
                     02
-                </div>
+                </span>
 
                 <h3>Web Development</h3>
 
                 <p>
-                    Technologies used to create web applications.
+                    Technologies used to build web applications.
                 </p>
 
-                <div class="skill-list">
 
-                    <span>HTML</span>
+                <div class="skill">
 
-                    <span>CSS</span>
+                    <div class="skill-header">
+                        <span>HTML</span>
+                        <span>90%</span>
+                    </div>
 
-                    <span>JavaScript</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="90%"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="skill">
+
+                    <div class="skill-header">
+                        <span>CSS</span>
+                        <span>85%</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="85%"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="skill">
+
+                    <div class="skill-header">
+                        <span>JavaScript</span>
+                        <span>75%</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="75%"></div>
+                    </div>
 
                 </div>
 
             </div>
 
 
-            <!-- Development Tools -->
+            <div class="skill-category reveal">
 
-            <div class="skill-category">
-
-                <div class="category-number">
+                <span class="section-number">
                     03
-                </div>
+                </span>
 
                 <h3>Development Tools</h3>
 
@@ -331,11 +393,31 @@
                     Tools used for development and version control.
                 </p>
 
-                <div class="skill-list">
 
-                    <span>Git</span>
+                <div class="skill">
 
-                    <span>GitHub</span>
+                    <div class="skill-header">
+                        <span>Git</span>
+                        <span>80%</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="80%"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="skill">
+
+                    <div class="skill-header">
+                        <span>GitHub</span>
+                        <span>80%</span>
+                    </div>
+
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="80%"></div>
+                    </div>
 
                 </div>
 
@@ -346,11 +428,11 @@
     </section>
 
 
-    <!-- ================= PROJECTS SECTION ================= -->
+    <!-- ================= PROJECTS ================= -->
 
     <section id="projects" class="section">
 
-        <div class="section-heading">
+        <div class="section-heading reveal">
 
             <p>WHAT I'VE BUILT</p>
 
@@ -362,9 +444,7 @@
         <div class="projects-container">
 
 
-            <!-- Project 1 -->
-
-            <div class="project-card">
+            <article class="project-card reveal">
 
                 <div class="project-top">
 
@@ -387,27 +467,21 @@
                 <p>
                     An AI-based cybersecurity project designed to detect
                     suspicious activities and improve security monitoring.
-                    The project focuses on applying intelligent techniques
-                    to cybersecurity.
                 </p>
 
 
                 <div class="project-tags">
 
                     <span>AI</span>
-
                     <span>Machine Learning</span>
-
                     <span>Cybersecurity</span>
 
                 </div>
 
-            </div>
+            </article>
 
 
-            <!-- Project 2 -->
-
-            <div class="project-card">
+            <article class="project-card reveal">
 
                 <div class="project-top">
 
@@ -429,33 +503,30 @@
 
                 <p>
                     A web platform designed to bring college events,
-                    workshops and activities together in one place,
-                    making it easier for students to discover events.
+                    workshops and activities together in one place.
                 </p>
 
 
                 <div class="project-tags">
 
                     <span>HTML</span>
-
                     <span>CSS</span>
-
                     <span>JavaScript</span>
 
                 </div>
 
-            </div>
+            </article>
 
         </div>
 
     </section>
 
 
-    <!-- ================= CONTACT SECTION ================= -->
+    <!-- ================= CONTACT ================= -->
 
     <section id="contact" class="section contact-section">
 
-        <div class="section-heading">
+        <div class="section-heading reveal">
 
             <p>GET IN TOUCH</p>
 
@@ -467,13 +538,11 @@
         <div class="contact-container">
 
 
-            <!-- Contact Information -->
+            <div class="contact-info reveal">
 
-            <div class="contact-info">
-
-                <div class="contact-number">
+                <span class="section-number">
                     04
-                </div>
+                </span>
 
                 <h3>
                     Have an idea or want to connect?
@@ -481,7 +550,7 @@
 
                 <p>
                     Feel free to reach out. I am always interested in
-                    learning, collaborating and exploring new opportunities
+                    learning, collaborating and exploring opportunities
                     in technology.
                 </p>
 
@@ -514,9 +583,7 @@
             </div>
 
 
-            <!-- Contact Form -->
-
-            <form id="contactForm">
+            <form id="contactForm" class="contact-form reveal">
 
                 <label for="name">
                     Name
@@ -525,7 +592,6 @@
                 <input
                     type="text"
                     id="name"
-                    name="name"
                     placeholder="Enter your name"
                     required
                 >
@@ -538,7 +604,6 @@
                 <input
                     type="email"
                     id="email"
-                    name="email"
                     placeholder="Enter your email"
                     required
                 >
@@ -550,7 +615,6 @@
 
                 <textarea
                     id="message"
-                    name="message"
                     placeholder="Write your message..."
                     required
                 ></textarea>
@@ -559,6 +623,8 @@
                 <button type="submit">
                     Send Message →
                 </button>
+
+                <p id="formStatus" class="form-status"></p>
 
             </form>
 
@@ -588,25 +654,11 @@
 
             <div class="footer-links">
 
-                <a href="#home">
-                    Home
-                </a>
-
-                <a href="#about">
-                    About
-                </a>
-
-                <a href="#skills">
-                    Skills
-                </a>
-
-                <a href="#projects">
-                    Projects
-                </a>
-
-                <a href="#contact">
-                    Contact
-                </a>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
 
             </div>
 
@@ -624,7 +676,16 @@
     </footer>
 
 
-    <!-- JavaScript -->
+    <!-- Scroll To Top -->
+
+    <button
+        id="scrollTop"
+        class="scroll-top"
+        aria-label="Scroll to top"
+    >
+        ↑
+    </button>
+
 
     <script src="script.js"></script>
 
