@@ -1,5 +1,5 @@
 /* =========================
-   LIVE TYPING EFFECT
+   TYPING EFFECT
 ========================= */
 
 const typingText =
@@ -19,9 +19,7 @@ let deleting = false;
 
 function typeEffect() {
 
-    const currentRole =
-        roles[roleIndex];
-
+    const currentRole = roles[roleIndex];
 
     if (!deleting) {
 
@@ -33,7 +31,6 @@ function typeEffect() {
 
         characterIndex++;
 
-
         if (
             characterIndex ===
             currentRole.length
@@ -41,10 +38,7 @@ function typeEffect() {
 
             deleting = true;
 
-            setTimeout(
-                typeEffect,
-                1300
-            );
+            setTimeout(typeEffect, 1300);
 
             return;
         }
@@ -59,22 +53,17 @@ function typeEffect() {
 
         characterIndex--;
 
-
         if (characterIndex === 0) {
 
             deleting = false;
 
             roleIndex++;
 
-            if (
-                roleIndex >=
-                roles.length
-            ) {
+            if (roleIndex >= roles.length) {
                 roleIndex = 0;
             }
         }
     }
-
 
     setTimeout(
         typeEffect,
@@ -91,63 +80,43 @@ typeEffect();
 ========================= */
 
 const sections =
-    document.querySelectorAll(
-        "section[id]"
-    );
+    document.querySelectorAll("section[id]");
 
 const navLinks =
-    document.querySelectorAll(
-        ".nav-link"
-    );
+    document.querySelectorAll(".nav-link");
 
 
 function updateActiveNavigation() {
 
     let currentSection = "";
 
+    sections.forEach(function (section) {
 
-    sections.forEach(
-        function (section) {
+        const sectionTop =
+            section.offsetTop - 180;
 
-            const sectionTop =
-                section.offsetTop - 180;
+        if (window.scrollY >= sectionTop) {
 
-
-            if (
-                window.scrollY >=
-                sectionTop
-            ) {
-
-                currentSection =
-                    section.getAttribute(
-                        "id"
-                    );
-            }
-
+            currentSection =
+                section.getAttribute("id");
         }
-    );
+
+    });
 
 
-    navLinks.forEach(
-        function (link) {
+    navLinks.forEach(function (link) {
 
-            link.classList.remove(
-                "active"
-            );
+        link.classList.remove("active");
 
+        if (
+            link.getAttribute("href") ===
+            "#" + currentSection
+        ) {
 
-            if (
-                link.getAttribute("href") ===
-                "#" + currentSection
-            ) {
-
-                link.classList.add(
-                    "active"
-                );
-            }
-
+            link.classList.add("active");
         }
-    );
+
+    });
 }
 
 
@@ -162,9 +131,7 @@ window.addEventListener(
 ========================= */
 
 const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
+    document.querySelectorAll(".reveal");
 
 
 const revealObserver =
@@ -172,24 +139,20 @@ const revealObserver =
 
         function (entries) {
 
-            entries.forEach(
-                function (entry) {
+            entries.forEach(function (entry) {
 
-                    if (
-                        entry.isIntersecting
-                    ) {
+                if (entry.isIntersecting) {
 
-                        entry.target.classList.add(
-                            "visible"
-                        );
+                    entry.target.classList.add(
+                        "visible"
+                    );
 
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-                    }
-
+                    revealObserver.unobserve(
+                        entry.target
+                    );
                 }
-            );
+
+            });
 
         },
 
@@ -199,74 +162,11 @@ const revealObserver =
     );
 
 
-revealElements.forEach(
-    function (element) {
+revealElements.forEach(function (element) {
 
-        revealObserver.observe(
-            element
-        );
+    revealObserver.observe(element);
 
-    }
-);
-
-
-/* =========================
-   SKILL BAR ANIMATION
-========================= */
-
-const skillProgress =
-    document.querySelectorAll(
-        ".skill-progress"
-    );
-
-
-const skillObserver =
-    new IntersectionObserver(
-
-        function (entries) {
-
-            entries.forEach(
-                function (entry) {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        const width =
-                            entry.target.getAttribute(
-                                "data-width"
-                            );
-
-
-                        entry.target.style.width =
-                            width;
-
-
-                        skillObserver.unobserve(
-                            entry.target
-                        );
-                    }
-
-                }
-            );
-
-        },
-
-        {
-            threshold: 0.5
-        }
-    );
-
-
-skillProgress.forEach(
-    function (skill) {
-
-        skillObserver.observe(
-            skill
-        );
-
-    }
-);
+});
 
 
 /* =========================
@@ -274,18 +174,14 @@ skillProgress.forEach(
 ========================= */
 
 const scrollTopButton =
-    document.getElementById(
-        "scrollTop"
-    );
+    document.getElementById("scrollTop");
 
 
 window.addEventListener(
     "scroll",
     function () {
 
-        if (
-            window.scrollY > 500
-        ) {
+        if (window.scrollY > 500) {
 
             scrollTopButton.classList.add(
                 "show"
@@ -307,11 +203,8 @@ scrollTopButton.addEventListener(
     function () {
 
         window.scrollTo({
-
             top: 0,
-
             behavior: "smooth"
-
         });
 
     }
@@ -323,52 +216,19 @@ scrollTopButton.addEventListener(
 ========================= */
 
 const contactForm =
-    document.getElementById(
-        "contactForm"
-    );
+    document.getElementById("contactForm");
 
 const formStatus =
-    document.getElementById(
-        "formStatus"
-    );
+    document.getElementById("formStatus");
 
 const nameInput =
-    document.getElementById(
-        "name"
-    );
+    document.getElementById("name");
 
 const emailInput =
-    document.getElementById(
-        "email"
-    );
+    document.getElementById("email");
 
 const messageInput =
-    document.getElementById(
-        "message"
-    );
-
-
-function clearStatus() {
-
-    formStatus.textContent = "";
-
-}
-
-
-nameInput.addEventListener(
-    "input",
-    clearStatus
-);
-
-emailInput.addEventListener(
-    "input",
-    clearStatus
-);
-
-messageInput.addEventListener(
-    "input",
-    clearStatus
-);
+    document.getElementById("message");
 
 
 contactForm.addEventListener(
@@ -376,7 +236,6 @@ contactForm.addEventListener(
     function (event) {
 
         event.preventDefault();
-
 
         const name =
             nameInput.value.trim();
@@ -404,9 +263,7 @@ contactForm.addEventListener(
         }
 
 
-        if (
-            !email.includes("@")
-        ) {
+        if (!email.includes("@")) {
 
             formStatus.textContent =
                 "Please enter a valid email address.";
@@ -438,13 +295,10 @@ contactForm.addEventListener(
 ========================= */
 
 const canvas =
-    document.getElementById(
-        "ai-background"
-    );
+    document.getElementById("ai-background");
 
 const ctx =
     canvas.getContext("2d");
-
 
 let particles = [];
 
@@ -452,17 +306,13 @@ let particles = [];
 function resizeCanvas() {
 
     const hero =
-        document.querySelector(
-            ".hero"
-        );
-
+        document.querySelector(".hero");
 
     canvas.width =
         window.innerWidth;
 
     canvas.height =
         hero.offsetHeight;
-
 
     createParticles();
 }
@@ -472,13 +322,10 @@ function createParticles() {
 
     particles = [];
 
-
     const particleCount =
         Math.min(
             75,
-            Math.floor(
-                window.innerWidth / 18
-            )
+            Math.floor(window.innerWidth / 18)
         );
 
 
@@ -525,8 +372,6 @@ function drawParticles() {
     );
 
 
-    /* Draw connections */
-
     for (
         let i = 0;
         i < particles.length;
@@ -547,7 +392,6 @@ function drawParticles() {
                 particles[i].y -
                 particles[j].y;
 
-
             const distance =
                 Math.sqrt(
                     dx * dx +
@@ -555,39 +399,29 @@ function drawParticles() {
                 );
 
 
-            if (
-                distance < 130
-            ) {
+            if (distance < 130) {
 
                 const opacity =
-                    1 -
-                    distance / 130;
-
+                    1 - distance / 130;
 
                 ctx.strokeStyle =
                     `rgba(96, 165, 250, ${opacity * 0.22})`;
 
-
                 ctx.lineWidth = 1;
 
-
                 ctx.beginPath();
-
 
                 ctx.moveTo(
                     particles[i].x,
                     particles[i].y
                 );
 
-
                 ctx.lineTo(
                     particles[j].x,
                     particles[j].y
                 );
 
-
                 ctx.stroke();
-
             }
 
         }
@@ -595,56 +429,49 @@ function drawParticles() {
     }
 
 
-    /* Draw particles */
+    particles.forEach(function (particle) {
 
-    particles.forEach(
-        function (particle) {
+        ctx.beginPath();
 
-            ctx.beginPath();
+        ctx.arc(
+            particle.x,
+            particle.y,
+            particle.size,
+            0,
+            Math.PI * 2
+        );
 
+        ctx.fillStyle =
+            "rgba(96, 165, 250, 0.75)";
 
-            ctx.arc(
-                particle.x,
-                particle.y,
-                particle.size,
-                0,
-                Math.PI * 2
-            );
-
-
-            ctx.fillStyle =
-                "rgba(96, 165, 250, 0.75)";
+        ctx.fill();
 
 
-            ctx.fill();
+        particle.x +=
+            particle.speedX;
+
+        particle.y +=
+            particle.speedY;
 
 
-            particle.x +=
-                particle.speedX;
+        if (
+            particle.x < 0 ||
+            particle.x > canvas.width
+        ) {
 
-            particle.y +=
-                particle.speedY;
-
-
-            if (
-                particle.x < 0 ||
-                particle.x > canvas.width
-            ) {
-
-                particle.speedX *= -1;
-            }
-
-
-            if (
-                particle.y < 0 ||
-                particle.y > canvas.height
-            ) {
-
-                particle.speedY *= -1;
-            }
-
+            particle.speedX *= -1;
         }
-    );
+
+
+        if (
+            particle.y < 0 ||
+            particle.y > canvas.height
+        ) {
+
+            particle.speedY *= -1;
+        }
+
+    });
 
 
     requestAnimationFrame(
