@@ -1,23 +1,29 @@
-# ApexPlanet Internship Portfolio
+# C M Mohan - Personal Portfolio
 
-## About
-Personal portfolio website created as part of the ApexPlanet Full Stack Web Development Internship.
+A responsive personal portfolio website developed as part of the ApexPlanet Software Pvt. Ltd. Full Stack Web Development Internship.
 
 ## Technologies Used
+
 - HTML5
 - CSS3
 - JavaScript
-- Git
-- GitHub
 
-## Features
-- Home section
-- About section
-- Skills section
-- Projects section
-- Contact form
-- JavaScript interactions
-- Responsive design
+## Sections
+
+- Home
+- About
+- Education
+- Skills
+- Certifications
+- Projects
+- Achievements
+- Experience
+- Contact
 
 ## Live Website
+
 https://mohancm200.github.io/apexplanet-internship/
+
+## GitHub Repository
+
+https://github.com/mohancm200/apexplanet-internship/
